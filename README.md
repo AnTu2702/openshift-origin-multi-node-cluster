@@ -9,18 +9,6 @@
 - Introduce 3rd worker node (also as storage-node for GlusterFS)
 - Extend DNS configuration on toolbox (3rd node's name entry)
 - Reduce available memory of all nodes to 2 GiB
-- 
-
-    modified:   ansible/ansible-hosts.yaml
-    modified:   ansible/playbooks/openshift-post-install.yml
-    modified:   ansible/playbooks/openshift-pre-install.yml
-    modified:   ansible/playbooks/populate-docker-registry.yml
-    new file:   cluster.sh
-    modified:   dns/forward.local
-    modified:   dns/reverse.local
-    modified:   machines-config.yml
-    modified:   util/provisioning
-    new file:   workarounds
 
 An OpenShift 3.7.2 cluster of 6 machine:
 
