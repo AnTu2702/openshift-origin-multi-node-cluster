@@ -1,6 +1,28 @@
-# OpenShift Origin Multi-Node Cluster
+# OpenShift Origin Multi-Node Cluster with GlusterFS
 
-An OpenShift 3.6 cluster of 5 machine:
+## Modifications of that fork
+
+- Provide cluster.sh for Linux/Mac machines (migrated from cluster.bat)
+- Adapt setup of Openshift Cluster to enable GlusterFS
+- Migrate safely to Openshift Origin 3.7.2 and it's mirror repositories
+- Adjust docker image versions to fit to Openshift Origin 3.7.2
+- Introduce 3rd worker node (also as storage-node for GlusterFS)
+- Extend DNS configuration on toolbox (3rd node's name entry)
+- Reduce available memory of all nodes to 2 GiB
+- 
+
+    modified:   ansible/ansible-hosts.yaml
+    modified:   ansible/playbooks/openshift-post-install.yml
+    modified:   ansible/playbooks/openshift-pre-install.yml
+    modified:   ansible/playbooks/populate-docker-registry.yml
+    new file:   cluster.sh
+    modified:   dns/forward.local
+    modified:   dns/reverse.local
+    modified:   machines-config.yml
+    modified:   util/provisioning
+    new file:   workarounds
+
+An OpenShift 3.7.2 cluster of 6 machine:
 
 | Machine  | Hostname          | IP             | Description |
 | :------- | :----             | :---:          | :---- |
@@ -9,6 +31,7 @@ An OpenShift 3.6 cluster of 5 machine:
 | Infra    | infra.local.net   |  192.168.1.110 | Infra Node hosting Docker registry and HA Proxy router |
 | Node1    | node1.local.net   |  192.168.1.111 | Worker node |
 | Node2    | node2.local.net   |  192.168.1.112 | Worker node |
+| Node3    | node2.local.net   |  192.168.1.113 | Worker node |
 
 
 ## Hardware Requirements
@@ -20,28 +43,12 @@ This demo environment requires a machine of:
 | Machine | CPU | Memory  | Primary Disk             | Secondary Disk |
 | :------ | :-: | :-----: | :----                    | :---- |
 | Toolbox | 1   | 2048 MB | 40 GB dynamic allocation | NA    |
-| Master  | 1   | 3072 MB | 40 GB dynamic allocation | 15 GB, dynamic, for Docker storage |
-| Infra   | 1   | 3072 MB | 40 GB dynamic allocation | 20 GB, dynamic, for Docker storage |
-| Node1   | 1   | 3072 MB | 40 GB dynamic allocation | 20 GB, dynamic, for Docker storage |
-| Node2   | 1   | 3072 MB | 40 GB dynamic allocation | 20 GB, dynamic, for Docker storage |
+| Master  | 1   | 2048 MB | 40 GB dynamic allocation | 15 GB, dynamic, for Docker storage |
+| Infra   | 1   | 2048 MB | 40 GB dynamic allocation | 20 GB, dynamic, for Docker storage |
+| Node1   | 1   | 2048 MB | 40 GB dynamic allocation | 20 GB, dynamic, for Docker storage |
+| Node2   | 1   | 2048 MB | 40 GB dynamic allocation | 20 GB, dynamic, for Docker storage |
+| Node3   | 1   | 2048 MB | 40 GB dynamic allocation | 20 GB, dynamic, for Docker storage |
 
-
-> **Note:**
->  If your machine has 8 GB RAM you can do the following:
->  
->  **1. Edit the machines-config.yml:**
->  
->  - Remove node2 at the end of the file.
->  - Adjust machines memory to be:
->
->  | Machine | Memory  | 
->  | :------  | :-----: | 
->  | Toolbox | 512 MB   |
->  | Master   | 2048 MB | 
->  | Infra      | 2048 MB | 
->  | Node1   | 2048 MB |
->  
->  **2. Edit /ansible/ansible-hosts.yaml: remove node2 from [worker_nodes] group.**
 
 
 
@@ -56,7 +63,7 @@ The following steps are tested on a Windows host machine.
  - Download the [Extension Pack](http://download.virtualbox.org/virtualbox/5.1.30/Oracle_VM_VirtualBox_Extension_Pack-5.1.30-118389.vbox-extpack) and add it to VirtualBox: **File --> Preferences --> Extensions --> Add**
 
 ### Install Vagrant 
- - Install [Vagrant](https://www.vagrantup.com/downloads.html). This environment has been tested with Vagrant 1.9.7
+ - Install [Vagrant](https://www.vagrantup.com/downloads.html). This environment has been tested with Vagrant 2.0.4
  
  - Install Vagrant VirtualBox Guest Plugin
 ```sh
@@ -94,8 +101,6 @@ cluster init [parallel]
 > **Note:**
 >  As it's the first run of the machines, Vagrant will run provisioning scripts to install any required tools and configure the machines connectivity and networking.
 
-
-
 ## Connecting to The Cluster
 
 ### Test  Network Connectivity
@@ -106,6 +111,7 @@ ping 192.168.1.101
 ping 192.168.1.110
 ping 192.168.1.111
 ping 192.168.1.112
+ping 192.168.1.113
 ```
 ### Add Cluster DNS to Host Machine
 Now, we need to cluster DNS to host in order to resolve machines hostnames:
@@ -133,7 +139,11 @@ Machines Users:
 | root    | vagrant  |
 | vagrant | vagrant  | 
 
+## Prepare GlusterFS Storage Devices (Manual preparation step)
 
+- Shutdown and halt node1, node2 and node3.
+- Provde an own 30 GB dynamic vdi image-files as IDE secondary slave device to each node1, node2 and node3.
+- vagrant up --parallel node1 node2 node3
 
 ## Installation and Configuration
 
