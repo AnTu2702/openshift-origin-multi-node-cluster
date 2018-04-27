@@ -197,5 +197,6 @@ cluster down
 ## Next Enhancements
 
 - Enhance documentation.
-- Convert provisioning shell scripts to Ansible playbooks.
-- Use GlusterFs for storage.
+- Adapt setup for proxy usage on all levels
+- Adapt setup for deployment on AWS
+- Play with GlusterFs for storage.
