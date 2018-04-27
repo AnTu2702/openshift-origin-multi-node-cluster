@@ -1,0 +1,31 @@
+### Workaround Issue: https://github.com/openshift/openshift-ansible/issues/8060
+
+dd if=/dev/zero of=/dev/sdc bs=1 count=2048
+
+vi /etc/multipath.conf
+
+blacklist {
+        devnode "^sdc"
+}
+
+systemctl restart multipathd
+
+### Workaround Issue: https://github.com/openshift/origin/issues/17947
+
+vi /usr/share/ansible/openshift-ansible//playbooks/byo/openshift-glusterfs/roles/openshift_storage_glusterfs/tasks/glusterfs_common.yml
+
+#Add the following task after task with name: "Delete pre-existing heketi resources":
+
+- name: Delete deploy-heketi resources
+  oc_obj:
+    namespace: "{{ glusterfs_namespace }}"
+    kind: "{{ item.kind }}"
+    name: "{{ item.name | default(omit) }}"
+    selector: "{{ item.selector | default(omit) }}"
+    state: absent
+  with_items:
+  - kind: "template,route,service,dc,jobs,secret"
+    selector: "deploy-heketi"
+  failed_when: False
+
+

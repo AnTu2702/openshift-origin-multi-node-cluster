@@ -14,9 +14,11 @@ master		IN  A	192.168.1.101
 infra		IN  A	192.168.1.110
 node1		IN  A	192.168.1.111
 node2		IN  A	192.168.1.112
+node3		IN  A	192.168.1.113
 
 100			IN  PTR		toolbox.local.net.
 101			IN  PTR		master.local.net.
 110			IN  PTR		infra.local.net.
 111			IN  PTR		node1.local.net.
 112			IN  PTR		node2.local.net.
+113			IN  PTR		node3.local.net.

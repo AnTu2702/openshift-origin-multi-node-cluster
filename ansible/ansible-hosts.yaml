@@ -3,14 +3,17 @@ masters
 etcd
 nodes
 nfs
+glusterfs
 
 [OSEv3:vars]
 ansible_ssh_user=root
 debug_level=2
 openshift_deployment_type=origin
-openshift_release=v3.7.0
-openshift_image_tag=v3.7.0
-openshift_pkg_version=-3.7.0
+openshift_release=v3.7.2
+openshift_image_tag=v3.7.2
+openshift_pkg_version=-3.7.2
+openshift_storage_glusterfs_namespace=glusterfs 
+openshift_storage_glusterfs_name=storage
 
 # Skip memory and disk check
 openshift_disable_check=disk_availability,memory_availability
@@ -87,9 +90,15 @@ master.local.net ansible_host=192.168.1.101 openshift_hostname=master.local.net 
 [etcd:children]
 masters
 
+[glusterfs]
+node1.local.net glusterfs_ip=192.168.1.111 glusterfs_devices='[ "/dev/sdc" ]'
+node2.local.net glusterfs_ip=192.168.1.112 glusterfs_devices='[ "/dev/sdc" ]'
+node3.local.net glusterfs_ip=192.168.1.113 glusterfs_devices='[ "/dev/sdc" ]'
+
 [worker_nodes]
 node1.local.net ansible_host=192.168.1.111 openshift_hostname=node1.local.net openshift_public_hostname=node1.local.net openshift_ip=192.168.1.111 openshift_public_ip=192.168.1.111  openshift_node_labels="{'region': 'primary', 'zone': 'east'}"
 node2.local.net ansible_host=192.168.1.112 openshift_hostname=node2.local.net openshift_public_hostname=node2.local.net openshift_ip=192.168.1.112 openshift_public_ip=192.168.1.112  openshift_node_labels="{'region': 'primary', 'zone': 'west'}"
+node3.local.net ansible_host=192.168.1.113 openshift_hostname=node3.local.net openshift_public_hostname=node3.local.net openshift_ip=192.168.1.113 openshift_public_ip=192.168.1.113  openshift_node_labels="{'region': 'primary', 'zone': 'central'}"
 
 [nodes:children]
 masters

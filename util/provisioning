@@ -32,7 +32,7 @@ def create_disks(vb, disks)
 		 end
       end
 	  ## 'SATA Controller', 'IDE Controller'
-	  controller = disk['controller'] ||= 'IDE'
+	  controller = disk['controller'] ||= 'IDE Controller'
       vb.customize ['storageattach', :id,  '--storagectl', controller, '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk['location']]
     end
   end
