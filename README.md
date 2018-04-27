@@ -27,6 +27,7 @@ This demo environment requires a machine of:
  - 4 cores
  - 16 GB RAM
  - 40 GB free disk space
+ - Additional drive (USB Stick, SDXC...) with at least 90 GB free space
  
 | Machine | CPU | Memory  | Primary Disk             | Secondary Disk |
 | :------ | :-: | :-----: | :----                    | :---- |
