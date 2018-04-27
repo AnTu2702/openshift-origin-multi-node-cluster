@@ -16,13 +16,14 @@ goto commonexit
 echo Initialize Cluster
 IF "%parallel%" == "parallel" (
     echo Parallel Node Initialization.
-	vagrant up --parallel master infra node1 node2 
+	vagrant up --parallel master infra node1 node2 node3
 ) ELSE (
     echo Sequential Node Initialization.
 	vagrant up master
 	vagrant up infra
 	vagrant up node1
 	vagrant up node2
+    vagrant up node3
 )
 vagrant up toolbox
 goto commonexit
@@ -32,12 +33,13 @@ echo Cluster Up
 vagrant up toolbox
 IF "%parallel%" == "parallel" (
     echo Parallel Node Start.
-	vagrant up --parallel infra node1 node2
+	vagrant up --parallel infra node1 node2 node3
 ) ELSE (
     echo Sequential Node Start.
 	vagrant up infra
 	vagrant up node1
 	vagrant up node2
+    vagrant up node3
 )
 vagrant up master
 goto commonexit
@@ -48,6 +50,7 @@ vagrant halt master
 vagrant halt infra
 vagrant halt node1
 vagrant halt node2
+vagrant halt node3
 vagrant halt toolbox
 goto commonexit
 
