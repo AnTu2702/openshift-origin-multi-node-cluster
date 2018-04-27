@@ -4,7 +4,7 @@
 
 - Provide cluster.sh for Linux/Mac machines (migrated from cluster.bat)
 - Adapt setup of Openshift Cluster to enable GlusterFS
-- Migrate safely to Openshift Origin 3.7.2 and it's mirror repositories
+- Migrate safely to Openshift Origin 3.7.2 and its mirror repositories
 - Adjust docker image versions to fit to Openshift Origin 3.7.2
 - Introduce 3rd worker node (also as storage-node for GlusterFS)
 - Extend DNS configuration on toolbox (3rd node's name entry)
@@ -42,12 +42,12 @@ This demo environment requires a machine of:
 
 
 ## Prerequisites
-The following steps are tested on a Windows host machine.
+The following steps are tested on a MacOS host machine.
 
 ### Install VirtualBox
 
  - Install [VirtualBox 5.1](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1)
- Check the [comparability](https://www.vagrantup.com/docs/virtualbox) between Vagrant and VirtualBox first. 
+ Check the [compatibility](https://www.vagrantup.com/docs/virtualbox) between Vagrant and VirtualBox first. 
  - Download the [Extension Pack](http://download.virtualbox.org/virtualbox/5.1.30/Oracle_VM_VirtualBox_Extension_Pack-5.1.30-118389.vbox-extpack) and add it to VirtualBox: **File --> Preferences --> Extensions --> Add**
 
 ### Install Vagrant 
@@ -75,7 +75,7 @@ All the machines are configures with NAT and Host Only adapters.
 
  - Navigate to your local copy and run the following command
 ```sh
-cluster init [parallel]
+./cluster.sh init parallel
 ```
 
 > **Note:**
@@ -118,7 +118,7 @@ ping XYZ.cloudapps.local.net
 ```
  
 ### SSH Connection to Cluster Machines
-Use your preferred SSH Client to connect to the machines. I personally recommend [MobaXterm](https://mobaxterm.mobatek.net/).
+Use your preferred SSH Client to connect to the machines. I personally recommend [iTerm2].
 Use the private key in the /keys directory to connect.
 Machines Users:
 
@@ -155,7 +155,7 @@ ansible-playbook /vagrant/ansible/playbooks/populate-docker-registry.yml
 ```
 
 > **Recommendation:**
->  Take snapshots of machines: master, infra, node1, and node1.
+>  Take snapshots of machines: master, infra, node1, node2 and node3.
 
 
 ## OpenShift
