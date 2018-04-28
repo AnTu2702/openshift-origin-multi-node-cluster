@@ -186,11 +186,11 @@ ansible-playbook /vagrant/ansible/playbooks/openshift-post-install.yml
 
  - Start the Cluster:
 ```sh
-cluster up [parallel]
+./cluster.sh up parallel
 ```
  - Shutdown the Cluster:
 ```sh
-cluster down
+./cluster.sh down
 ```
 
 
