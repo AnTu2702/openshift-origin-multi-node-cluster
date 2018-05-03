@@ -31,6 +31,12 @@ Vagrant.configure("2") do |config|
   #config.vbguest.auto_update = false
   ## Disable default folder synch
   config.vm.synced_folder '.', '/vagrant', disabled: true
+
+  if Vagrant.has_plugin?("vagrant-proxyconf")
+      config.proxy.http     = "http://10.0.2.2:3130"
+      config.proxy.https    = "http://10.0.2.2:3130"
+      config.proxy.no_proxy = "localhost,127.0.0.1,.example.com"
+  end
   
   machinesConfig.each do |machine|
     name              = machine['name']

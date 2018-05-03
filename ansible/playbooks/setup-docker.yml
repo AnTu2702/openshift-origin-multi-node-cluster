@@ -5,26 +5,44 @@
   become: yes
   
   tasks:        
+    - name: Setup Proxy for YUM
+      lineinfile:
+        path: /etc/yum.conf
+        line: proxy=http://10.0.2.2:3130
+        insertafter: [main]
+
     - name: Uninstall Previous Docker Packages
       yum:
         name: docker
         state: absent
-    
+
     - name: Install Docker
       yum:
         name: docker
         state: latest
-        
+
     - name: Stop Docker Service
       service:
         name: docker
         state: stopped
-    
+
     - name: Cleaning up Docker Configurations
       file:
         path: /var/lib/docker
         state: absent
-    
+
+    - name: Setup HTTPS-Proxy for Docker
+      lineinfile:
+        path: /etc/sysconfig/docker
+        line: HTTPS_PROXY="http://10.0.2.2:3130"
+        insertbefore: BOF
+
+    - name: Setup HTTP-Proxy for Docker
+      lineinfile:
+        path: /etc/sysconfig/docker
+        line: HTTP_PROXY="http://10.0.2.2:3130"
+        insertbefore: BOF    
+
     - name: Create Docker Storage Configurations
       shell:
         cmd: |

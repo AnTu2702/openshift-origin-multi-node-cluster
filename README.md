@@ -1,5 +1,9 @@
 # OpenShift Origin Multi-Node Cluster with GlusterFS
 
+## Modifications on that branch
+
+- Setup proxy server on all leves (work in progress)
+
 ## Modifications of that fork
 
 - Provide cluster.sh for Linux/Mac machines (migrated from cluster.bat)
@@ -39,9 +43,6 @@ This demo environment requires a machine of:
 | Node3   | 1   | 2048 MB | 40 GB dynamic allocation | 20 GB, dynamic, for Docker storage |
 
 
-
-
-
 ## Prerequisites
 The following steps are tested on a MacOS host machine.
 
@@ -53,9 +54,25 @@ The following steps are tested on a MacOS host machine.
 
 ### Install Vagrant 
  - Install [Vagrant](https://www.vagrantup.com/downloads.html). This environment has been tested with Vagrant 2.0.4
+
+ - Install a cntlm-server on your host machine configured for your upstream proxy server (use the following config)
+
+   Username        <your-proxy-user>
+   Domain          <your-domain>
+   Password        <your-password>
+   Proxy           <upstream-proxy>:<port>
+   NoProxy         <your no-proxy list entries>
+   Header          Connection: Keep-Alive
+   Gateway         yes
+   Listen          127.0.0.1:3130
+   Listen          192.168.1.1:3130
  
- - Install Vagrant VirtualBox Guest Plugin
+ - Install Vagrant VirtualBox Proxy and Guest Plugins
 ```sh
+export http_proxy=http://192.168.1.1:3130
+export https_proxy=http://192.168.1.1:3130
+
+vagrant plugin install vagrant-proxyconf
 vagrant plugin install vagrant-vbguest
 ```
 
@@ -197,6 +214,5 @@ ansible-playbook /vagrant/ansible/playbooks/openshift-post-install.yml
 ## Next Enhancements
 
 - Enhance documentation.
-- Adapt setup for proxy usage on all levels
 - Adapt setup for deployment on AWS
 - Play with GlusterFs for storage.
