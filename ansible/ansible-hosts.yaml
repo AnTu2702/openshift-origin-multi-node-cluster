@@ -15,6 +15,17 @@ openshift_pkg_version=-3.7.2
 openshift_storage_glusterfs_namespace=glusterfs 
 openshift_storage_glusterfs_name=storage
 
+#Proxy Setup
+openshift_http_proxy=http://10.0.2.2:3130
+openshift_https_proxy=http://10.0.2.2:3130
+openshift_no_proxy=*.local.net, 192.168.1.0/24, 10.0.2.0/24, 172.17.0.0/16
+openshift_generate_no_proxy_hosts=False
+openshift_builddefaults_http_proxy=http://10.0.2.2:3130
+openshift_builddefaults_https_proxy=http://10.0.2.2:3130
+openshift_builddefaults_no_proxy=*.local.net, 192.168.1.0/24, 10.0.2.0/24, 172.17.0.0/16
+openshift_builddefaults_git_http_proxy=http://10.0.2.2:3130
+openshift_builddefaults_git_https_proxy=http://10.0.2.2:3130
+
 # Skip memory and disk check
 openshift_disable_check=disk_availability,memory_availability
 
