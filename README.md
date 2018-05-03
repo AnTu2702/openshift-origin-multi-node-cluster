@@ -59,12 +59,12 @@ The following steps are tested on a MacOS host machine.
 
 | Key      | Value                        |  
 | :------- | :--------------------------- |
-| Username | <your-proxy-user>            |
-| Domain   | <your-domain>                |
-| Password | <your-password>              |
-| Proxy    | <upstream-proxy>:<port>      |
-| NoProxy  | <your no-proxy list entries> |
-| Header   | Connection: Keep-Alive       |
+| Username | (your-proxy-user)            |
+| Domain   | (your-domain)                |
+| Password | (your-password)              |
+| Proxy    | (upstream-proxy):(port)      |
+| NoProxy  | (your no-proxy list entries) |
+| Header   | Connection\: Keep-Alive      |
 | Gateway  | yes                          |
 | Listen   | 127.0.0.1:3130               |
 | Listen   | 192.168.1.1:3130             |
