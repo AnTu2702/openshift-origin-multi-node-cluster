@@ -35,6 +35,7 @@
       lineinfile:
         path: /etc/sysconfig/docker
         line: HTTPS_PROXY="http://10.0.2.2:3130"
+        line: NO_PROXY="local.net,docker-registry.default.svc.cluster.local,10.104.194.8,10.104.193.36,10.104.192.80"
         insertbefore: BOF
 
     - name: Setup HTTP-Proxy for Docker

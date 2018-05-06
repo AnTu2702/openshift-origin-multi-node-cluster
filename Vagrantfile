@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
   if Vagrant.has_plugin?("vagrant-proxyconf")
       config.proxy.http     = "http://10.0.2.2:3130"
       config.proxy.https    = "http://10.0.2.2:3130"
-      config.proxy.no_proxy = "localhost,127.0.0.1,.local.net,192.168.1.*,172.17.*"
+      config.proxy.no_proxy = "localhost,127.0.0.1,.local.net,192.168.1.1,192.168.1.100,192.168.1.101,192.168.1.110,192.168.1.111,192.168.1.112,192.168.1.113,10.0.2.2,10.0.2.3,10.0.2.15,172.17.0.1,10.128.2.1,10.128.0.1,10.129.0.1,10.130.0.1,10.131.0.1,.cluster.local"
   end
   
   machinesConfig.each do |machine|

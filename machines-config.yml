@@ -24,14 +24,12 @@
   # Cluster Master
   - name: master
     ip:   192.168.1.101
-    memory: 2048
+    memory: 3072
     
     disks:
       - location: disks/master-docker
         size: 15
-        #controller: SATA Controller
-        #format: vmdk
-        #fixed: yes
+        sata: no
         
    # Docker Register, and HA Proxy
   - name: infra
@@ -40,7 +38,8 @@
     
     disks:
       - location: disks/infra-docker        
-        size: 20      
+        size: 20
+        sata: no      
 
    # Worker node1
   - name: node1
@@ -48,8 +47,14 @@
     memory: 2048
     
     disks:
-      - location: disks/node1-docker
+      - location: disks/node1-docker   
         size: 20
+        sata: no
+      - location: disks/node1-gluster  
+        size: 50
+        sata: yes
+        port: 1
+        device: 0 
 
    # Worker node2
   - name: node2
@@ -59,6 +64,11 @@
     disks:
       - location: disks/node2-docker
         size: 20
+      - location: disks/node2-gluster
+        size: 50
+        sata: yes
+        port: 1
+        device: 0
 
    # Worker node3
   - name: node3
@@ -68,4 +78,8 @@
     disks:
       - location: disks/node3-docker
         size: 20
-        
+      - location: disks/node3-gluster
+        size: 50
+        sata: yes
+        port: 1
+        device: 0
