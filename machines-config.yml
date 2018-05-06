@@ -30,6 +30,8 @@
       - location: disks/master-docker
         size: 15
         sata: no
+        port: 1
+        device: 0
         
    # Docker Register, and HA Proxy
   - name: infra
@@ -39,7 +41,9 @@
     disks:
       - location: disks/infra-docker        
         size: 20
-        sata: no      
+        sata: no
+        port: 1
+        device: 0     
 
    # Worker node1
   - name: node1
@@ -50,6 +54,8 @@
       - location: disks/node1-docker   
         size: 20
         sata: no
+        port: 1
+        device: 0
       - location: disks/node1-gluster  
         size: 50
         sata: yes
@@ -64,6 +70,9 @@
     disks:
       - location: disks/node2-docker
         size: 20
+        sata: no
+        port: 1
+        device: 0
       - location: disks/node2-gluster
         size: 50
         sata: yes
@@ -78,6 +87,9 @@
     disks:
       - location: disks/node3-docker
         size: 20
+        sata: no
+        port: 1
+        device: 0
       - location: disks/node3-gluster
         size: 50
         sata: yes
