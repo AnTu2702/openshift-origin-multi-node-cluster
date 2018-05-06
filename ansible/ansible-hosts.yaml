@@ -18,11 +18,11 @@ openshift_storage_glusterfs_name=storage
 #Proxy Setup
 openshift_http_proxy=http://10.0.2.2:3130
 openshift_https_proxy=http://10.0.2.2:3130
-openshift_no_proxy=.local.net, 192.168.1.0/24, 10.0.2.0/24, 172.17.0.0/16, .cluster.local, 10.128.0.0/14
+openshift_no_proxy=.local.net, 192.168.1.0/24, 10.0.2.0/24, 172.17.0.0/16, .cluster.local, 10.128.0.0/14, .svc
 openshift_generate_no_proxy_hosts=True
 openshift_builddefaults_http_proxy=http://10.0.2.2:3130
 openshift_builddefaults_https_proxy=http://10.0.2.2:3130
-openshift_builddefaults_no_proxy=.local.net, 192.168.1.0/24, 10.0.2.0/24, 172.17.0.0/16, .cluster.local, 10.128.0.0/14
+openshift_builddefaults_no_proxy=.local.net, 192.168.1.0/24, 10.0.2.0/24, 172.17.0.0/16, .cluster.local, 10.128.0.0/14, .svc
 openshift_builddefaults_git_http_proxy=http://10.0.2.2:3130
 openshift_builddefaults_git_https_proxy=http://10.0.2.2:3130
 
