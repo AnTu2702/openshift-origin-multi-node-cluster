@@ -99,7 +99,7 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 - Note https link of that file: (should be similar to https://s3.eu-central-1.amazonaws.com/your-s3-bucketname/aws-ocp-cf-template.yaml)
 
 ### Fetch openshift-ansible from github
-- Jump out to the parent folder on your disk of this git-project (e.g. ~/projects/)
+- Jump out from the parent folder on your disk of this git-project (e.g. ~/projects/)
 - git clone https://github.com/openshift/openshift-ansible.git
 - cd openshift-ansible
 - git checkout origin/release-3.6
