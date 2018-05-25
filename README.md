@@ -99,7 +99,7 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 - Note https link of that file: (should be similar to https://s3.eu-central-1.amazonaws.com/your-s3-bucketname/aws-ocp-cf-template.yaml)
 
 ### Fetch openshift-ansible from github
-- Jump out from the parent folder on your disk of this git-project (e.g. ~/projects/)
+- Jump out from the parent folder on your disk of this git-project (e.g. cd ~/projects/)
 - git clone https://github.com/openshift/openshift-ansible.git
 - cd openshift-ansible
 - git checkout origin/release-3.6
@@ -112,8 +112,8 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 ## Setup Cluster on AWS
 
 ### Cluster Init (auto setup infrastructure using cloudformation)
-- Run: chmmod 755 ./cluster.sh
-- Run: ./cluster.sh init
+- chmmod 755 ./cluster.sh
+- ./cluster.sh init
 
 ### SSH access to all of your cluster nodes and confirm signature
 - ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #master
@@ -130,7 +130,7 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 - exit
 
 ### Cluster Up
-- Run: ./cluster.sh up ### This will take about 45 minutes
+- ./cluster.sh up ### This will take about 45 minutes
 
 ### Set permissions to cluster user
 - ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #master
