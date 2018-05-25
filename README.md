@@ -39,37 +39,17 @@ The following steps are tested on a MacOS host machine...
 
 ### Install aws-cli and setup credentials for your personal aws account
 
+- Check out basic instructions from here: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
+
 ### Register 4 Elastic-IPs manually
+
+- Create 4 unassociated Elastic IP addresses from AWS management console and note them
+- Preassign them in mind by free choice to the required instances (master, node1, node2 and node3)
 
 ### Create EC2 SSH key manually and save it locally
 
-- Create those entries in ~/.ssh/config (for all 4 elastic ips used by the 4 cluster nodes)
-
-``` bash
-Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
-  Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
-  Port 22
-  User centos
-  IdentityFile ~/your-key-folder/your-ec2-ssh-private-key-file.pem
-  
-Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
-  Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
-  Port 22
-  User centos
-  IdentityFile ~/your-key-folder/your-ec2-ssh-private-key-file.pem
-  
-Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
-  Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
-  Port 22
-  User centos
-  IdentityFile ~/your-key-folder/your-ec2-ssh-private-key-file.pem
-  
-Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
-  Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
-  Port 22
-  User centos
-  IdentityFile ~/your-key-folder/your-ec2-ssh-private-key-file.pem
-  ```
+- Create an ec2 ssh keypair and download/store the private pem-file to ~/folder-of-your-choice/your-ec2-ssh-private-key-file.pem
+- Execute: chmod 400 ~/folder-of-your-choice/your-ec2-ssh-private-key-file.pem
 
 ### Subscribe to AWS marketplace AMI for Centos 7
 
@@ -79,22 +59,81 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 
 ### Prepare ssh config
 
+- Create those entries in ~/.ssh/config (for all 4 elastic ips used by the 4 cluster nodes)
+
+``` bash
+Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Port 22
+  User centos
+  IdentityFile ~/folder-of-your-choice/your-ec2-ssh-private-key-file.pem
+  
+Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Port 22
+  User centos
+  IdentityFile ~/folder-of-your-choice/your-ec2-ssh-private-key-file.pem
+  
+Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Port 22
+  User centos
+  IdentityFile ~/folder-of-your-choice/your-ec2-ssh-private-key-file.pem
+  
+Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Port 22
+  User centos
+  IdentityFile ~/folder-of-your-choice/your-ec2-ssh-private-key-file.pem
+  ```
+
 ### Prepare ansible inventory file
+- Open ./ansible/ansible-hosts.yaml with an editor of your choice:
 - Optional: Update AMI-ID of Centos 7 image for eu-central-1 noted above (current latest image: "ami-9a183671")
-- 
+- Paste the elastic-ip-addresses and related ec2-hostnames (your choice above) to the appropriate locations in that file 
 
 ### Create S3 manually and upload ansible inventory file
+- Create an S3-bucket in region eu-central-1
+- Upload aws-ocp-cf-template.yaml to that bucket
+- Note https link of that file: (should be similar to https://s3.eu-central-1.amazonaws.com/<<your-s3-bucketname>>/aws-ocp-cf-template.yaml)
 
 ### Fetch openshift-ansible from github
+- Jump out to the parent folder on your disk of this git-project (e.g. ~/projects/)
+- git clone https://github.com/openshift/openshift-ansible.git
+- cd openshift-ansible
+- git checkout origin/release-3.6
 
+### Prepare cluster.sh script for usage
+- Replace your s3 bucket url at "--template-url" value
+- Replace your ssh-keyfile-path at "ParameterValue" value
+ 
 ## Setup Cluster on AWS
 
 ### Cluster Init
+- Run: chmmod 755 ./cluster.sh
+- Run: ./cluster.sh init
+
+### SSH access to all of your cluster nodes and confirm signature
+- ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #master
+- Confirm signature: yes
+- Leave machine: exit
+- ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #node1
+- Confirm signature: yes
+- Leave machine: exit
+- ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #node2
+- Confirm signature: yes
+- Leave machine: exit
+- ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #node3
+- Confirm signature: yes
+- Leave machine: exit
 
 ### Cluster Up
+- Run: ./cluster.sh up ### This will take about 45 minutes
 
 ### Set permissions to cluster user
 - sudo htpasswd -b /etc/openshift/openshift-passwd admin yoursupersecretpassword
 - sudo oadm policy add-cluster-role-to-user cluster-admin admin
 
-### SSH access to cluster nodes
+### Connecto to Openshift Web Console:
+- Open a browser and surf to https://ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com:8443 (ip of master node)
+- Confirm the security exception(s) warnings from your browser and proceed to page...
