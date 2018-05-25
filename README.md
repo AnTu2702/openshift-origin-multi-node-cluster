@@ -51,7 +51,7 @@ The following steps are tested on a MacOS host machine...
 ### Create EC2 SSH key manually and save it locally
 
 - Create an ec2 ssh keypair and download/store the private pem-file to ~/folder-of-your-choice/your-ec2-ssh-private-key-file.pem
-- Execute: chmod 400 ~/folder-of-your-choice/your-ec2-ssh-private-key-file.pem
+- chmod 400 ~/folder-of-your-choice/your-ec2-ssh-private-key-file.pem
 
 ### Subscribe to AWS marketplace AMI for Centos 7
 
@@ -90,7 +90,7 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 
 ### Prepare ansible inventory file
 - Open ./ansible/ansible-hosts.yaml with an editor of your choice:
-- Optional: Update AMI-ID of Centos 7 image for eu-central-1 noted above (current latest image: "ami-9a183671")
+- Update AMI-ID of Centos 7 image for eu-central-1 noted above (current latest image: "ami-9a183671")
 - Paste the elastic-ip-addresses and related ec2-hostnames (your choice above) to the appropriate locations in that file 
 
 ### Create S3 manually and upload ansible inventory file
@@ -105,7 +105,7 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 - git checkout origin/release-3.6
 
 ### Prepare cluster.sh script for usage
-- Open ./cluster.sh with an editor of your choice
+- Open ./cluster.sh with an editor of your choice (e.g. vi ./cluster.sh)
 - Replace your s3 bucket url at "--template-url" value
 - Replace your ssh-keyfile-path at "ParameterValue" value
  
