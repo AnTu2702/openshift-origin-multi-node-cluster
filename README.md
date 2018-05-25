@@ -13,10 +13,10 @@ An OpenShift 3.6.1 cluster of 4 machines:
 
 | Machine  | Hostname                                            | IP                 | Description         |
 | :------- | :----                                               | :---:              | :----               |
-| Master   | ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com  | from 10.0.0.0/27   | Cluster Master node |
-| Node1    | ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com  | from 10.0.0.0/27   | Worker node         |
-| Node2    | ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com  | from 10.0.0.32/27  | Worker node         |
-| Node3    | ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com  | from 10.0.0.64/27  | Worker node         |
+| Master   | ec2-<EE-LL-II-PP>.eu-central-1.compute.amazonaws.com  | from 10.0.0.0/27   | Cluster Master node |
+| Node1    | ec2-<EE-LL-II-PP>.eu-central-1.compute.amazonaws.com  | from 10.0.0.0/27   | Worker node         |
+| Node2    | ec2-<EE-LL-II-PP>.eu-central-1.compute.amazonaws.com  | from 10.0.0.32/27  | Worker node         |
+| Node3    | ec2-<EE-LL-II-PP>.eu-central-1.compute.amazonaws.com  | from 10.0.0.64/27  | Worker node         |
 
 
 ## Hardware Requirements
