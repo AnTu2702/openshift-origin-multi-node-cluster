@@ -32,6 +32,6 @@ ec2-<elastic-ip-node2>.eu-central-1.compute.amazonaws.com openshift_node_labels=
 ec2-<elastic-ip-node3>.eu-central-1.compute.amazonaws.com openshift_node_labels="{'region': 'primary', 'zone': 'eu-central-1'}"
 
 [glusterfs]
-ec2-<elastic-ip-node1>.eu-central-1.compute.amazonaws.com glusterfs_ip=<10.0.0.X> glusterfs_devices='[ "/dev/xvdc" ]'
-ec2-<elastic-ip-node2>.eu-central-1.compute.amazonaws.com glusterfs_ip=<10.0.0.Y> glusterfs_devices='[ "/dev/xvdc" ]'
-ec2-<elastic-ip-node3>.eu-central-1.compute.amazonaws.com glusterfs_ip=<10.0.0.Z> glusterfs_devices='[ "/dev/xvdc" ]'
+ec2-<elastic-ip-node1>.eu-central-1.compute.amazonaws.com glusterfs_ip=<elastic-ip-node1> glusterfs_devices='[ "/dev/xvdc" ]'
+ec2-<elastic-ip-node2>.eu-central-1.compute.amazonaws.com glusterfs_ip=<elastic-ip-node2> glusterfs_devices='[ "/dev/xvdc" ]'
+ec2-<elastic-ip-node3>.eu-central-1.compute.amazonaws.com glusterfs_ip=<elastic-ip-node3> glusterfs_devices='[ "/dev/xvdc" ]'
