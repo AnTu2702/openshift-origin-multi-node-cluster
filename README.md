@@ -117,16 +117,16 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 ### SSH access to all of your cluster nodes and confirm signature
 - ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #master
 - Confirm signature: yes
-- Leave machine: exit
+- exit
 - ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #node1
 - Confirm signature: yes
-- Leave machine: exit
+- exit
 - ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #node2
 - Confirm signature: yes
-- Leave machine: exit
+- exit
 - ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #node3
 - Confirm signature: yes
-- Leave machine: exit
+- exit
 
 ### Cluster Up
 - Run: ./cluster.sh up ### This will take about 45 minutes
