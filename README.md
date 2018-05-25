@@ -140,3 +140,8 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 ### Connecto to Openshift Web Console:
 - Open a browser and surf to https://ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com:8443 (ip of master node)
 - Confirm the security exception(s) warnings from your browser and proceed to page...
+
+## Open Issues:
+- Activate AWS integration for cluster to use EBS and EFS storage classes
+- Parametrize Scripts in order to reduce installation effort
+- Maybe never: Parametrize aws region (for deployments in others than eu-central-1)
