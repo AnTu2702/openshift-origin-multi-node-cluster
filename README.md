@@ -1,5 +1,5 @@
 # OpenShift Origin Multi-Node Cluster with GlusterFS 
-# Restriction: Currently hardcoded to AWS region eu-central-1 only!
+### Restriction: Currently hardcoded to AWS region eu-central-1 only!
 
 ## Modifications on that branch
 
