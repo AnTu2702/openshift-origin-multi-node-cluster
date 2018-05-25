@@ -5,7 +5,7 @@
 
 - Setup cluster on AWS account (work in progress)
 
-## Modifications of that fork
+## Common Remark for Setup strategy on AWS
 
 - Setup Strategy based on: https://sysdig.com/blog/deploy-openshift-aws/#
 
