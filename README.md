@@ -35,9 +35,9 @@ This demo environment requires four ec2 machines of (t2.micro):
 | Node2   | 1   | 1024 MB | 8 GB EBS allocation | 12 GB, EBS, for Docker storage | 16 GB, EBS, for GlusterFS storage |
 | Node3   | 1   | 1024 MB | 8 GB EBS allocation | 12 GB, EBS, for Docker storage | 16 GB, EBS, for GlusterFS storage |
 
-The following steps are tested on a MacOS host machine...
 
 ## Prerequisites
+The following steps are tested on a MacOS host machine...
 
 ### Install aws-cli and setup credentials for your personal aws account
 
