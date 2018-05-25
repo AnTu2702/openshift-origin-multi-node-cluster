@@ -104,6 +104,7 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 - git checkout origin/release-3.6
 
 ### Prepare cluster.sh script for usage
+- Open ./cluster.sh with an editor of your choice
 - Replace your s3 bucket url at "--template-url" value
 - Replace your ssh-keyfile-path at "ParameterValue" value
  
