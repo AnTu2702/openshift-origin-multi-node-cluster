@@ -60,7 +60,7 @@ The following steps are tested on a MacOS host machine...
 ### Cluster Up
 
 ### Set permissions to cluster user
-- sudo htpasswd -b /etc/openshift/openshift-passwd admin youradminpassword
+- sudo htpasswd -b /etc/openshift/openshift-passwd admin yoursupersecretpassword
 - sudo oadm policy add-cluster-role-to-user cluster-admin admin
 
 ### SSH access to cluster nodes
