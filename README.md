@@ -10,12 +10,12 @@
 
 An OpenShift 3.6.1 cluster of 4 machines:
 
-| Machine  | Hostname          | IP             | Description |
-| :------- | :----             | :---:          | :---- |
-| Master   | master.local.net  |  192.168.1.101 | Cluster Master node |
-| Node1    | node1.local.net   |  192.168.1.111 | Worker node |
-| Node2    | node2.local.net   |  192.168.1.112 | Worker node |
-| Node3    | node2.local.net   |  192.168.1.113 | Worker node |
+| Machine  | Hostname                                            | IP                 | Description         |
+| :------- | :----                                               | :---:              | :----               |
+| Master   | ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com  |  from 10.0.0.0/27  | Cluster Master node |
+| Node1    | ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com  |  from 10.0.0.0/27  | Worker node         |
+| Node2    | ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com  |  from 10.0.0.32/27 | Worker node         |
+| Node3    | ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com  |  from 10.0.0.64/27 | Worker node         |
 
 
 ## Hardware Requirements
@@ -23,19 +23,18 @@ This demo environment requires a machine of:
  - 1 cores
  - 1 GB RAM
  - 8 GB free disk space
- - Additional EBS drive with 16 GB free space
+ - Up to 2 additional EBS drive with 12GB and 16 GB free space
  
-| Machine | CPU | Memory  | Primary Disk             | Secondary Disk |
-| :------ | :-: | :-----: | :----                    | :---- |
-| Master  | 1   | 1024 MB | 8 GB EBS allocation | 12 GB, EBS, for Docker storage |
-| Node1   | 1   | 1024 MB | 8 GB EBS allocation | 12 GB, EBS, for Docker storage |
-| Node2   | 1   | 1024 MB | 8 GB EBS allocation | 12 GB, EBS, for Docker storage |
-| Node3   | 1   | 1024 MB | 8 GB EBS allocation | 12 GB, EBS, for Docker storage |
+| Machine | CPU | Memory  | Primary Disk        | Secondary Disk                 | Tertiary Disk                     |
+| :------ | :-: | :-----: | :----               | :----                          | :----                             |
+| Master  | 1   | 1024 MB | 8 GB EBS allocation | 12 GB, EBS, for Docker storage | none                              |
+| Node1   | 1   | 1024 MB | 8 GB EBS allocation | 12 GB, EBS, for Docker storage | 16 GB, EBS, for GlusterFS storage |
+| Node2   | 1   | 1024 MB | 8 GB EBS allocation | 12 GB, EBS, for Docker storage | 16 GB, EBS, for GlusterFS storage |
+| Node3   | 1   | 1024 MB | 8 GB EBS allocation | 12 GB, EBS, for Docker storage | 16 GB, EBS, for GlusterFS storage |
 
+The following steps are tested on a MacOS host machine...
 
 ## Prerequisites
-
-The following steps are tested on a MacOS host machine.
 
 ### Install aws-cli and setup credentials for your personal aws account
 
@@ -60,7 +59,7 @@ The following steps are tested on a MacOS host machine.
 ### Cluster Up
 
 ### Set permissions to cluster user
-sudo htpasswd -b /etc/openshift/openshift-passwd admin deinemudda
-sudo oadm policy add-cluster-role-to-user cluster-admin admin
+- sudo htpasswd -b /etc/openshift/openshift-passwd admin deinemudda
+- sudo oadm policy add-cluster-role-to-user cluster-admin admin
 
 ### SSH access to cluster nodes
