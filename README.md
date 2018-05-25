@@ -9,6 +9,8 @@
 
 - Setup Strategy based on: https://sysdig.com/blog/deploy-openshift-aws/#
 
+## Infrastructure Description
+
 An OpenShift 3.6.1 cluster of 4 machines:
 
 | Machine  | Hostname                                            | IP                 | Description         |
