@@ -43,11 +43,45 @@ The following steps are tested on a MacOS host machine...
 
 ### Create EC2 SSH key manually and save it locally
 
+- Create those entries in ~/.ssh/config (for all 4 elastic ips used by the 4 cluster nodes)
+
+``` bash
+Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Port 22
+  User centos
+  IdentityFile ~/your-key-folder/your-ec2-ssh-private-key-file.pem
+  
+Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Port 22
+  User centos
+  IdentityFile ~/your-key-folder/your-ec2-ssh-private-key-file.pem
+  
+Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Port 22
+  User centos
+  IdentityFile ~/your-key-folder/your-ec2-ssh-private-key-file.pem
+  
+Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
+  Port 22
+  User centos
+  IdentityFile ~/your-key-folder/your-ec2-ssh-private-key-file.pem
+  ```
+
 ### Subscribe to AWS marketplace AMI for Centos 7
+
+- Login to AWS management console
+- Subscribe to Centos 7 AMI from AWS Marketplace using this link: https://aws.amazon.com/marketplace/pp/B00O7WM7QW
+- Note AMI-ID for eu-central-1 (current latest image: "ami-9a183671")
 
 ### Prepare ssh config
 
 ### Prepare ansible inventory file
+- Optional: Update AMI-ID of Centos 7 image for eu-central-1 noted above (current latest image: "ami-9a183671")
+- 
 
 ### Create S3 manually and upload ansible inventory file
 
