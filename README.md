@@ -96,7 +96,7 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 ### Create S3 manually and upload ansible inventory file
 - Create an S3-bucket in region eu-central-1
 - Upload aws-ocp-cf-template.yaml to that bucket
-- Note https link of that file: (should be similar to https://s3.eu-central-1.amazonaws.com/<<your-s3-bucketname>>/aws-ocp-cf-template.yaml)
+- Note https link of that file: (should be similar to https://s3.eu-central-1.amazonaws.com/your-s3-bucketname/aws-ocp-cf-template.yaml)
 
 ### Fetch openshift-ansible from github
 - Jump out to the parent folder on your disk of this git-project (e.g. ~/projects/)
