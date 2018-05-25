@@ -1,0 +1,40 @@
+- hosts: nodes
+  gather_facts: no
+  pre_tasks:
+    - name: 'install python2'
+      raw: sudo yum install -y python
+
+  tasks:
+
+    - name: upgrade packages
+      yum: state=latest name={{ item }}
+      with_items:
+        - docker
+        - NetworkManager
+
+    - name: enable network-manager
+      shell: systemctl enable NetworkManager && systemctl start NetworkManager
+
+    - name: docker storage conf file
+      copy:
+        content: "DEVS=/dev/xvdb\nVG=docker-vg\n"
+        dest: /etc/sysconfig/docker-storage-setup
+
+    - name: docker-storage-setup
+      shell: docker-storage-setup
+
+    - name: enable docker
+      shell: systemctl enable docker && systemctl start docker
+
+    #- name: config swap
+    #  shell: |
+    #    sudo mkdir /mnt/swap
+    #    sudo mount /dev/xvdd /mnt/swap
+    #    sudo dd if=/dev/zero of=/mnt/swap/swapfile bs=1M count=2048
+    #    sudo chown root:root /mnt/swap/swapfile
+    #    sudo chmod 600 /mnt/swap/swapfile
+    #    sudo mkswap /mnt/swap/swapfile
+    #    sudo swapon /mnt/swap/swapfile
+    #    sudo echo "/dev/xvdc /mnt auto defaults,nobootwait,comment=cloudconfig 0 2" >> /etc/fstab
+    #    sudo echo "/mnt/swap/swapfile swap swap defaults 0 0"  >> /etc/fstab
+    #    sudo swapon -a

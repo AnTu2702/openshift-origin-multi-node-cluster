@@ -2,60 +2,32 @@
 
 clusterInit () {
    echo "Initialize Cluster"
-   if [[ $1 == parallel ]]; then
-      echo "Parallel Node Initialization."
-      vagrant up --parallel master infra node1 node2 node3
-   else
-      echo "Sequential Node Initialization."
-      vagrant up master
-      vagrant up infra
-      vagrant up node1
-      vagrant up node2
-      vagrant up node3
-   fi
-
-   vagrant up toolbox
+   aws cloudformation create-stack  --region eu-central-1  --stack-name ocp-gluster-benchmark  --template-url "https://s3.eu-central-1.amazonaws.com/<<your-s3-bucketname>>/aws-ocp-cf-template.yaml"  --parameters ParameterKey=KeyName,ParameterValue=<your-ec2-ssh-private-key-file.pem> --capabilities=CAPABILITY_IAM
 }
 
 clusterUp () {
    echo "Cluster Up"
-   vagrant up toolbox
-   if [[ $1 == parallel ]]; then
-      echo "Parallel Node Start."
-      vagrant up --parallel infra node1 node2 node3
-   else
-      echo "Sequential Node Start."
-      vagrant up infra
-      vagrant up node1
-      vagrant up node2
-      vagrant up node3
-   fi
-
-   vagrant up master
+   ansible-playbook -i ./ansible-hosts.yaml ./ansible/playbooks/prepare.yml
+   ansible-playbook -i ./ansible-hosts.yaml ../openshift-ansible/playbooks/byo/config.yml
 }
 
 clusterDown () {
    echo "Cluster Down"
-   vagrant halt master
-   vagrant halt infra
-   vagrant halt node1
-   vagrant halt node2
-   vagrant halt node3
-   vagrant halt toolbox
+   echo "Not implemented..."
 }
 
 if [[ $1 == init ]]; then
-   clusterInit $2
+   clusterInit
    exit 0
 fi
 
 if [[ $1 == up ]]; then
-   clusterUp $2
+   clusterUp
    exit 0
 fi
 
 if [[ $1 == down ]]; then
-   clusterDown $2
+   clusterDown
    exit 0
 fi
 
