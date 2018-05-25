@@ -1,4 +1,4 @@
-# OpenShift Origin Multi-Node Cluster in AWS cloud with 3-AZ-replicated GlusterFS 
+# OpenShift Origin Multi-Node Cluster in AWS with 3-AZ-replicated GlusterFS 
 ### Current Restriction: Hardcoded AWS region: "eu-central-1" (Frankfurt)
 
 ## Modifications on that branch
