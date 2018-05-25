@@ -110,7 +110,7 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
  
 ## Setup Cluster on AWS
 
-### Cluster Init (Will setup infrastructure using cloudformation)
+### Cluster Init (auto setup infrastructure using cloudformation)
 - Run: chmmod 755 ./cluster.sh
 - Run: ./cluster.sh init
 
