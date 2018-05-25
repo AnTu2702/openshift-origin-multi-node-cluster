@@ -132,8 +132,10 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 - Run: ./cluster.sh up ### This will take about 45 minutes
 
 ### Set permissions to cluster user
+- ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #master
 - sudo htpasswd -b /etc/openshift/openshift-passwd admin yoursupersecretpassword
 - sudo oadm policy add-cluster-role-to-user cluster-admin admin
+- exit
 
 ### Connecto to Openshift Web Console:
 - Open a browser and surf to https://ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com:8443 (ip of master node)
