@@ -7,7 +7,7 @@
 
 ## Modifications of that fork
 
-- strategy based on: https://sysdig.com/blog/deploy-openshift-aws/#
+- Setup Strategy based on: https://sysdig.com/blog/deploy-openshift-aws/#
 
 An OpenShift 3.6.1 cluster of 4 machines:
 
