@@ -1,4 +1,4 @@
-# OpenShift Origin Multi-Node Cluster with GlusterFS 
+# OpenShift Origin Multi-Node Cluster with 3-AZ-replicated GlusterFS 
 ### Current Restriction: Hardcoded AWS region: "eu-central-1" (Frankfurt)
 
 ## Modifications on that branch
@@ -20,7 +20,7 @@ An OpenShift 3.6.1 cluster of 4 machines:
 
 
 ## Hardware Requirements
-This demo environment requires a machine of:
+This demo environment requires four ec2 machines of (t2.micro):
  - 1 cores
  - 1 GB RAM
  - 8 GB free disk space
