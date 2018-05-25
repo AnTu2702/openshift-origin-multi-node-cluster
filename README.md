@@ -55,7 +55,6 @@ The following steps are tested on a MacOS host machine...
 
 ### Subscribe to AWS marketplace AMI for Centos 7
 
-- Login to AWS management console
 - Subscribe to Centos 7 AMI from AWS Marketplace using this link: https://aws.amazon.com/marketplace/pp/B00O7WM7QW
 - Note AMI-ID for eu-central-1 (current latest image: "ami-9a183671")
 
