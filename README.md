@@ -138,4 +138,4 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 ## Open Issues:
 - Activate AWS integration for cluster to use EBS and EFS storage classes
 - Parametrize Scripts in order to reduce installation effort
-- Maybe never: Parametrize aws region (for deployments in others than eu-central-1)
+- Maybe never: Parametrize AWS region (for deployments in others than eu-central-1)
