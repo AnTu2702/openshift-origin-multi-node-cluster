@@ -22,7 +22,7 @@ An OpenShift 3.6.1 cluster of 4 machines:
 
 
 ## Hardware Requirements
-This demo environment requires four ec2 machines of (t2.micro):
+This demo environment requires four ec2 machines of (at least t2.micro):
  - 1 cores
  - 1 GB RAM
  - 8 GB free disk space
@@ -43,7 +43,7 @@ The following steps are tested from a MacOS host machine as ansible host...
 
 - brew install ansible
 
-### Install aws-cli and setup credentials for your personal aws account
+### Install aws-cli and setup credentials for your personal AWS account
 
 - Check out basic instructions from here: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
 
