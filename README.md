@@ -67,24 +67,28 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
   Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
   Port 22
   User centos
+  StrictHostKeyChecking no
   IdentityFile ~/folder-of-your-choice/your-ec2-ssh-private-key-file.pem
   
 Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
   Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
   Port 22
   User centos
+  StrictHostKeyChecking no
   IdentityFile ~/folder-of-your-choice/your-ec2-ssh-private-key-file.pem
   
 Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
   Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
   Port 22
   User centos
+  StrictHostKeyChecking no
   IdentityFile ~/folder-of-your-choice/your-ec2-ssh-private-key-file.pem
   
 Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
   Hostname ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
   Port 22
   User centos
+  StrictHostKeyChecking no
   IdentityFile ~/folder-of-your-choice/your-ec2-ssh-private-key-file.pem
   ```
 
@@ -116,18 +120,7 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 - ./cluster.sh init
 
 ### SSH access to all of your cluster nodes and confirm signature
-- ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #master
-- Confirm signature: yes
-- exit
-- ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #node1
-- Confirm signature: yes
-- exit
-- ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #node2
-- Confirm signature: yes
-- exit
-- ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #node3
-- Confirm signature: yes
-- exit
+- Nothing to do. Should be fine using "StrictHostKeyChecking no" in your ~/.ssh/config
 
 ### Cluster Up
 - ./cluster.sh up ### This will take about 45 minutes
