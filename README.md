@@ -37,7 +37,11 @@ This demo environment requires four ec2 machines of (t2.micro):
 
 
 ## Prerequisites
-The following steps are tested on a MacOS host machine...
+The following steps are tested from a MacOS host machine as ansible host...
+
+### Install ansible (ansible-playbook command will be required later)
+
+- brew install ansible
 
 ### Install aws-cli and setup credentials for your personal aws account
 
@@ -123,7 +127,8 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 - (Dispensible. Should be fine using "StrictHostKeyChecking no" in your ~/.ssh/config)
 
 ### Cluster Up
-- ./cluster.sh up ### This will take about 45 minutes
+- ./cluster.sh up
+- Wait about 45 minutes until playbook finishes successfully
 
 ### Set permissions to cluster user
 - ssh ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com #master
