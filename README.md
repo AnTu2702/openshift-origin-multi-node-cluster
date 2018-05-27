@@ -119,8 +119,8 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 - chmmod 755 ./cluster.sh
 - ./cluster.sh init
 
-### SSH access to all of your cluster nodes and confirm signature
-- Nothing to do. Should be fine using "StrictHostKeyChecking no" in your ~/.ssh/config
+### SSH access to all of your cluster nodes once and confirm signature
+- (Dispensible. Should be fine using "StrictHostKeyChecking no" in your ~/.ssh/config)
 
 ### Cluster Up
 - ./cluster.sh up ### This will take about 45 minutes
