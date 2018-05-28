@@ -155,25 +155,25 @@ Resources:
 
 ### EIP
 
-  IPAssoc:
+  IPAssoc0:
     Type: AWS::EC2::EIPAssociation
     Properties:
       InstanceId: !Ref openshiftmaster
       EIP: "<<elastic ip for openshift-master>>"
 
-  IPAssoc:
+  IPAssoc1:
     Type: AWS::EC2::EIPAssociation
     Properties:
       InstanceId: !Ref openshiftworker1
       EIP: "<<elastic ip for openshift-worker1>>"
 
-  IPAssoc:
+  IPAssoc2:
     Type: AWS::EC2::EIPAssociation
     Properties:
       InstanceId: !Ref openshiftworker2
       EIP: "<<elastic ip for openshift-worker2>>"
 
-  IPAssoc:
+  IPAssoc3:
     Type: AWS::EC2::EIPAssociation
     Properties:
       InstanceId: !Ref openshiftworker3
