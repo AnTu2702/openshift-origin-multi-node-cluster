@@ -131,7 +131,6 @@ Machines Users:
 ## Prepare GlusterFS Storage Devices (Manual preparation step)
 
 - Shutdown and halt node1, node2 and node3.
-- Provde (Using VirtualBox Manager) a new and empty 30 GB dynamic vdi-image-file as IDE secondary slave device to each worker node (node1, node2, node3).
 - vagrant up --parallel node1 node2 node3
 
 ## Installation and Configuration
