@@ -144,3 +144,4 @@ Host ec2-EE-LL-II-PP.eu-central-1.compute.amazonaws.com
 - Activate AWS integration for cluster to use EBS and EFS storage classes
 - Parametrize Scripts in order to reduce installation effort
 - Parametrize AWS region (for deployments in other regions than eu-central-1)
+- Describe benchmarking for glusterfs volumes using fio (undocumented benchmark folder)
