@@ -5,7 +5,7 @@ USER root
 
 # Disable output buffer for python
 ENV PYTHONUNBUFFERED=1
-:
+
 # Default Proxy used, when no parameter passed in
 #ARG proxy=http://10.0.2.2:3130/
 
