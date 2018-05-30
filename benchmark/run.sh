@@ -1,6 +1,7 @@
 #!/bin/bash -eux
 
-fio /app/eval.fio --output-format=terse --output=results.csv
-fio2gnuplot -t bw -b -g -p '*_bw*'
-fio2gnuplot -t iops -i -g -p '*_iops*'
+fio /app/eval.fio
+fio2gnuplot -t Bandwitdh -b -g
+fio2gnuplot -t iops -i -g
+fio2gnuplot -t lat -g -p '*_lat*'
 python -m SimpleHTTPServer 8000
