@@ -18,11 +18,10 @@ WORKDIR /app
 #ENV no_proxy .amazonaws.com,.cluster.local
 
 # Install Python
-RUN yum install python -y
-
-# Install FIO
-RUN yum install fio -y
-
+RUN yum install -y \
+      fio \
+      python \
+      gnuplot
 
 # Copy the current directory contents into the container at /app
 COPY . /app
