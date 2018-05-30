@@ -6,6 +6,9 @@ USER root
 # Disable output buffer for python
 ENV PYTHONUNBUFFERED=1
 
+# Set the working directory to /app
+WORKDIR /app
+
 # Default Proxy used, when no parameter passed in
 #ARG proxy=http://10.0.2.2:3130/
 
@@ -20,8 +23,6 @@ RUN yum install python -y
 # Install FIO
 RUN yum install fio -y
 
-# Set the working directory to /app
-WORKDIR /app
 
 # Copy the current directory contents into the container at /app
 COPY . /app
