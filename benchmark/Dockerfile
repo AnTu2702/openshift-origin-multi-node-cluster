@@ -26,6 +26,7 @@ RUN yum install -y \
 # Copy the current directory contents into the container at /app
 COPY . /app
 
-
 # Run app.py when the container launches
-CMD ["python", "-u", app.py"]
+#CMD ["python", "-u", app.py"]
+
+CMD /app/run.sh
