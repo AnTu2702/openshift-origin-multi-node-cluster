@@ -6,6 +6,9 @@ USER root
 # Disable output buffer for python
 ENV PYTHONUNBUFFERED=1
 
+# Set the working directory to /app
+WORKDIR /app
+
 # Default Proxy used, when no parameter passed in
 #ARG proxy=http://10.0.2.2:3130/
 
@@ -15,18 +18,15 @@ ENV PYTHONUNBUFFERED=1
 #ENV no_proxy .amazonaws.com,.cluster.local
 
 # Install Python
-RUN yum install python -y
-
-# Install FIO
-RUN yum install fio -y
-
-# Set the working directory to /app
-WORKDIR /app
+RUN yum install -y \
+      fio \
+      python \
+      gnuplot
 
 # Copy the current directory contents into the container at /app
-ADD . /app
-
-WORKDIR /app
+COPY . /app
 
 # Run app.py when the container launches
-CMD ["python", "-u", app.py"]
+#CMD ["python", "-u", app.py"]
+
+CMD /app/run.sh
