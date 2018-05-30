@@ -20,7 +20,6 @@ bs=16k
 rw=randread
 stonewall
 log_avg_msec=10
-#per_job_logs=0
 write_bw_log=rand-read-16k
 write_iops_log=rand-read-16k
 write_lat_log=rand-read-16k
@@ -31,7 +30,6 @@ bs=16k
 rw=randwrite
 stonewall
 log_avg_msec=10
-#per_job_logs=0
 write_bw_log=rand-write-16k
 write_iops_log=rand-write-16k
 write_lat_log=rand-write-16k

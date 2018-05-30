@@ -21,7 +21,8 @@ WORKDIR /app
 RUN yum install -y \
       fio \
       python \
-      gnuplot
+      gnuplot \
+&& pip install s3cmd
 
 # Copy the current directory contents into the container at /app
 COPY . /app
@@ -29,4 +30,5 @@ COPY . /app
 # Run app.py when the container launches
 #CMD ["python", "-u", app.py"]
 
-CMD /app/run.sh
+#CMD /app/run.sh
+CMD ["sleep", "36000"]
