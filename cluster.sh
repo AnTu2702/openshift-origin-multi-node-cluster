@@ -13,7 +13,6 @@ clusterInit () {
       vagrant up node2
       vagrant up node3
    fi
-
    vagrant up toolbox
 }
 
@@ -30,7 +29,6 @@ clusterUp () {
       vagrant up node2
       vagrant up node3
    fi
-
    vagrant up master
 }
 

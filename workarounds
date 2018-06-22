@@ -28,4 +28,18 @@ vi /usr/share/ansible/openshift-ansible//playbooks/byo/openshift-glusterfs/roles
     selector: "deploy-heketi"
   failed_when: False
 
+### Workaround Issue: https://github.com/hashicorp/vagrant/issues/8107
+
+This seems to be a bug in Virtualbox. Still present in latest Windows version at this time; 5.2.8. Error can be reproduced just running the command vboxmanage.exe createdhd --filename foo.vdi --size 10240. If you then delete that .vdi file and run the same command again, you get VERR_ALREADY_EXISTS.
+
+To workaround this, you can run vboxmanage.exe list hdds which will give you a list of virtual hard disks along with their UUIDs, then select the problem disk's UUID and run...
+
+vboxmanage.exe closemedium <UUID> --delete
+
+After doing this you can then create the disk again using the createhd option
+
+### Workaround Issue: ???
+
+Some of the machines (nodeX, master, infra) seem to lose the nameserver entry 192.168.1.100 in /etc/resolv.conf
+Misconfiguration in NetworkManager assumed. Haven't fixed that, yet. If that happens - I currently re-enter the missing line by hand
 
