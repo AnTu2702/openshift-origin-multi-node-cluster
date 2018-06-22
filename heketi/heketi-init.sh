@@ -33,13 +33,21 @@ oc logout > /dev/null
 echo "...OK"
 
 echo "Updating your ~/.bash_profile..."
-echo "HEKETI_CLI_USER=$HEKETI_CLI_USER"
-echo "HEKETI_CLI_KEY=$HEKETI_CLI_KEY"
-echo "HEKETI_CLI_SERVER=$HEKETI_CLI_SERVER"
+#echo "HEKETI_CLI_USER=$HEKETI_CLI_USER"
+#echo "HEKETI_CLI_KEY=$HEKETI_CLI_KEY"
+#echo "HEKETI_CLI_SERVER=$HEKETI_CLI_SERVER"
+echo "...OK"
+
+echo "Setting environment variables for now..."
+export HEKETI_CLI_USER=$HEKETI_CLI_USER
+export HEKETI_CLI_KEY=$HEKETI_CLI_KEY
+export HEKETI_CLI_SERVER=$HEKETI_CLI_SERVER
 echo "...OK"
 echo ""
 
-echo "[A] From this shell use heketi-cli for gluster-management like..."
-echo "heketi-cli topology info --user $HEKETI_CLI_USER --secret $HEKETI_CLI_KEY --server $HEKETI_CLI_SERVER"
-echo "[B] From a new shell simply like..."
-echo "hekeit-cli topology info"
+#echo "[A] From this shell use heketi-cli for gluster-management like..."
+#echo "heketi-cli topology info --user $HEKETI_CLI_USER --secret $HEKETI_CLI_KEY --server $HEKETI_CLI_SERVER"
+#echo "[B] From a new shell simply like..."
+#echo "hekeit-cli topology info"
+
+echo "heketi-cli is now configured for usage (e.g. heketi-cli topology info)"
