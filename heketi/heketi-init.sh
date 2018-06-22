@@ -2,12 +2,16 @@
 
 set -e
 
+CLUSTER_MASTER_HOST=master.local.net
+CLUSTER_MASTER_PORT=8443
+
 CLUSTER_ADMIN_USER=admin
 CLUSTER_ADMIN_PASSWORD=admin
+
 HEKETI_CLI_USER=admin
 
 echo "Connecting to Openshift Origin Cluster..."
-oc login master.local.net:8443 -u $CLUSTER_ADMIN_USER -p $CLUSTER_ADMIN_PASSWORD > /dev/null
+oc login $CLUSTER_MASTER_HOST:$CLUSTER_MASTER_PORT -u $CLUSTER_ADMIN_USER -p $CLUSTER_ADMIN_PASSWORD > /dev/null
 echo "...OK"
 
 echo "Switch to project: glusterfs..."
