@@ -14,7 +14,7 @@ echo "Connecting to Openshift Origin Cluster..."
 oc login $CLUSTER_MASTER_HOST:$CLUSTER_MASTER_PORT -u $CLUSTER_ADMIN_USER -p $CLUSTER_ADMIN_PASSWORD > /dev/null
 echo "...OK"
 
-echo "Switch to project: glusterfs..."
+echo "Switching to project: glusterfs..."
 oc project glusterfs > /dev/null
 echo "...OK"
 
