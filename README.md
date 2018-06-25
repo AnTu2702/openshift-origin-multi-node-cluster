@@ -185,6 +185,9 @@ ansible-playbook /vagrant/ansible/playbooks/populate-docker-registry.yml
 ansible-playbook /vagrant/ansible/playbooks/openshift-pre-install.yml
 ```
  - Install OpenShift:
+
+Attention: Check the issues listed in the file "workarounds" before executing this playbook!
+
 ```sh
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/config.yml
 ```

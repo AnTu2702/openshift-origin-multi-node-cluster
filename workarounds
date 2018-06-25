@@ -40,6 +40,9 @@ After doing this you can then create the disk again using the createhd option
 
 ### Workaround Issue: ???
 
-Some of the machines (nodeX, master, infra) seem to lose the nameserver entry 192.168.1.100 in /etc/resolv.conf
-Misconfiguration in NetworkManager assumed. Haven't fixed that, yet. If that happens - I currently re-enter the missing line by hand
-
+The NetworkManager is mandatorily configured for all nodes overwriting /etc/resolv.conf unfortunately with wrong or insufficient nameserver entries.
+As a preliminary workaround, modify the following file on toolbox.local.net before executing the config.yml main playbook for Openshift!
+- Open the file:
+/usr/share/ansible/openshift-ansible/roles/openshift_node_dnsmasq/files/networkmanager/99-origin-dns.sh
+- Add this line before line 116:
+echo "nameserver 192.168.1.100 >> ${NEW_RESOLV_CONF}"
