@@ -45,4 +45,4 @@ As a preliminary workaround, modify the following file on toolbox.local.net befo
 - Open the file:
 /usr/share/ansible/openshift-ansible/roles/openshift_node_dnsmasq/files/networkmanager/99-origin-dns.sh
 - Add this line before line 116:
-echo "nameserver 192.168.1.100 >> ${NEW_RESOLV_CONF}"
+echo "nameserver 192.168.1.100" >> ${NEW_RESOLV_CONF}
